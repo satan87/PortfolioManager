@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<title>FTS Team</title>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular-resource.js"></script>
+	
+	<script src="nsa-trading.js"></script>
+	<script src="index.js"></script>
+	
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+		
+</head>
+<body  ng-controller="myCtrl">
+<!-- TITLE -->
+<div class="page-header text-center"><h1>Portfolios Manager</h1></div>
+<!-- SPECIFIC -->
+<!-- PTF List -->
+<table class="table table-striped" >
+	<tr>
+		<th> ID
+		<th> Name
+		<th> Real ?
+		<th> Cash Invested
+		<th> Cash Remaining Today
+		<th> N. of trades
+		<th> N. Of Instruments
+		<th> N. Of Open Positions
+		<th> Trades List
+		<th> PNL Closed
+		<th> PNL Open
+	</tr>
+	<tr ng-repeat="ptf in ptfs.portfolios">
+		<td>{{ptf.portfolio.id}}
+		<td>{{ptf.portfolio.name}}
+		<td>{{ptf.portfolio.real}}
+		<td>{{ptf.cashInvested | number:2}}
+		<td>{{ptf.cashRemaining | number:2 }}
+		<td>{{ptf.numberOfTrades}}
+		<td>{{ptf.numberOfInstruments}}
+		<td>{{ptf.numberOfOpenPostions}}
+		<td> 
+			<div ng-if="ptfs.getToggle('tradeList',ptf.portfolio.id)==true">
+				<button class="btn btn-success" ng-click="ptfs.setToggle('tradeList',ptf.portfolio.id)">Hide !</input>
+			</div>
+			<div ng-if="ptfs.getToggle('tradeList',ptf.portfolio.id)==false">
+				<button class="btn btn-primary" ng-click="ptfs.setToggle('tradeList',ptf.portfolio.id)">Display !</input>
+			</div>
+		</td>
+		<td> 
+			<div ng-if="ptfs.getToggle('close',ptf.portfolio.id)==true">
+				<button class="btn btn-success" ng-click="ptfs.setToggle('close',ptf.portfolio.id)">Hide !</input>
+			</div>
+			<div ng-if="ptfs.getToggle('close',ptf.portfolio.id)==false">
+				<button class="btn btn-primary" ng-click="ptfs.setToggle('close',ptf.portfolio.id)">Display !</input>
+			</div>
+		</td>
+		<td> 
+			<div ng-if="ptfs.getToggle('open',ptf.portfolio.id)==true">
+				<button class="btn btn-success" ng-click="ptfs.setToggle('open',ptf.portfolio.id)">Hide !</input>
+			</div>
+			<div ng-if="ptfs.getToggle('open',ptf.portfolio.id)==false">
+				<button class="btn btn-primary" ng-click="ptfs.setToggle('open',ptf.portfolio.id)">Display !</input>
+			</div>
+		</td>
+
+	</tr>
+</table>
+<hr>
+<!-- TRADE LIST -->
+<hr>
+<div>
+<!--
+{{ptfs.displays}}
+PC : {{ptfs.pc}}
+PR : {{ptfs.pnlr}}
+-->
+<div ng_repeat="p in ptfs.portfolios">
+	<div ng-if="ptfs.getToggle('tradeList',p.portfolio.id)==true">
+		<div>
+			Trades List for portfolio {{p.portfolio.id}} - {{p.portfolio.name}}
+		</div>
+		<table class="table table-striped">
+			<tr>
+				<th>Type
+				<th>Date
+				<th>Symbol
+				<th>Instrument
+				<th>Quantity
+				<th>Price
+				<th>Amount
+				<th>Commission
+			</tr>
+			<tr>
+				<td colspan='6'><input type="text" ng-model="ptfs.searchTrade"/></td>
+			</tr>
+			<tr>
+				<td><input type="text" ng-model="ptfs.searchTradeType"/></td>
+				<td>&nbsp;
+				<td><input type="text" ng-model="ptfs.searchTradeSymbol"/></td>
+				<td><input type="text" ng-model="ptfs.searchTradeInstrument"/></td>
+				<td><input type="text" ng-model="ptfs.searchTradeQuantity"/></td>
+				<td>&nbsp;
+				<td>&nbsp;
+				<td>&nbsp;
+			</tr>
+			<tr ng-repeat="pos in ptfs.getTradeList(p.portfolio.id) | filter:ptfs.searchTrade | filter:ptfs.searchTradeTypeF | filter:ptfs.searchTradeSymbolF | filter:ptfs.searchTradeInstrumentF | filter:ptfs.searchTradeQuantityF" >
+				<td>{{pos.type}}
+				<td>{{pos.dateEffective | date}}
+				<td>{{pos.instrument.symbol}}
+				<td>{{pos.instrument.name}}
+				<td>{{pos.quantity}}
+				<td>{{pos.price}}
+				<td>
+					<div ng-if="pos.type=='Cash'">{{pos.amount | number:2}}</div>
+					<div ng-if="pos.type=='Dividend'">{{pos.amount | number:2}}</div>
+					<div ng-if="pos.type=='Trade'">{{-(pos.quantity * pos.price) | number:2}}</div>
+				</td>
+				<td>{{pos.commission | number:2}}
+			</tr>
+
+		</table>
+	</div>
+		
+	</div>
+</div>
+</div>
+<!-- PNL CLOSED -->
+<div>
+<!--
+{{ptfs.displays}}
+PC : {{ptfs.pc}}
+PR : {{ptfs.pnlr}}
+-->
+<div ng_repeat="p in ptfs.portfolios">
+	<div ng-if="ptfs.getToggle('close',p.portfolio.id)==true">
+		<div>
+			PNL Realized for portfolio {{p.portfolio.id}} - {{p.portfolio.name}}
+		</div>
+		<table class="table table-striped">
+			<tr>
+				<th>Symbol
+				<th>Instrument
+				<th>Quantity
+				<th>Trades
+				<th>Buy Cost
+				<th>Sell Cost
+				<th>PNL
+				<th>Commission
+				<th>PNL, With commission
+				<th>Dividend
+				<th>PNL REALIZED
+
+			</tr>
+			<tr ng-repeat="pos in ptfs.getPNLRealized(p.portfolio.id)">
+				<td>{{pos.instrument.symbol}}
+				<td>{{pos.instrument.name}}
+				<td>
+					<div ng-if="pos.quantity > 0">{{pos.quantity}}</div>
+					<div ng-if="pos.quantity <= 0">&nbsp;</div>
+				</td>
+				<td>
+					<div ng-if="pos.quantity > 0">{{pos.trades}}</div>
+					<div ng-if="pos.quantity <= 0">&nbsp;</div>
+				</td>
+				<td>
+					<div ng-if="pos.quantity > 0">{{pos.buyCost | number:3}}</div>
+					<div ng-if="pos.quantity <= 0">&nbsp;</div>
+				</td>
+				<td>
+					<div ng-if="pos.quantity > 0">{{pos.sellCost | number:3}}</div>
+					<div ng-if="pos.quantity <= 0">&nbsp;</div>
+				</td>
+				<td>
+					<div ng-if="pos.quantity > 0">{{pos.pnl | number:3}}</div>
+					<div ng-if="pos.quantity <= 0">&nbsp;</div>
+				</td>
+				<td>
+					<div ng-if="pos.quantity > 0">{{pos.commissionPayed | number:3}}</div>
+					<div ng-if="pos.quantity <= 0">&nbsp;</div>
+				</td>
+				<td>
+					<div ng-if="pos.quantity > 0">{{pos.pnlwithCommission | number:3}}</div>
+					<div ng-if="pos.quantity <= 0">&nbsp;</div>
+				</td>
+				<td>{{pos.dividend | number:3}}
+				<td>{{pos.pnlwithCommission + pos.dividend | number:3}}
+			</tr>
+			<tr>
+				<td>&nbsp;
+				<td>&nbsp;
+				<td>&nbsp;
+				<td>&nbsp;
+				<td>&nbsp;
+				<td>&nbsp;
+				<td>{{ptfs.totals(p.portfolio.id,"sumPNLClosePNL") | number:3}}
+				<td>{{ptfs.totals(p.portfolio.id,"sumPNLCloseCOMMISSION") | number:3}}
+				<td>{{ptfs.totals(p.portfolio.id,"sumPNLClosePNLWITHCOMMISSION") | number:3}}
+				<td>{{ptfs.totals(p.portfolio.id,"sumPNLCloseDIVIDEND") | number:3}}
+				<td>{{ptfs.totals(p.portfolio.id,"sumPNLClosePNLREALIZED") | number:3}}
+			</tr>
+		</table>
+	</div>
+		
+	</div>
+</div>
+</div>
+
+<!-- PNL OPEN -->
+<div>
+<div ng_repeat="p in ptfs.portfolios">
+	<div ng-if="ptfs.getToggle('open',p.portfolio.id)==true">
+		<div>
+			Open positions for portfolio {{p.portfolio.id}} - {{p.portfolio.name}}
+		</div>
+		<table class="table table-striped" >
+			<tr>
+				<th>Symbol
+				<th>Instrument
+				<th>Quantity
+				<th>Unit Cost
+				<th>Cost
+				<th>Last Price
+				<th>Day Change
+				<th>Actual Value
+				<th>Day Gain
+				<th>Open Position
+				<th>Open Position(%)
+			</tr>
+			<tr ng-repeat="pos in ptfs.getPNLOpen(p.portfolio.id)">
+				<td>{{pos.instrument.symbol}}
+				<td>{{pos.instrument.name}}
+				<td>{{pos.quantity}}
+				<td>{{-pos.costPerShare | number:3}}
+				<td>{{pos.cost | number:3}} - ( {{pos.costWithCommission | number:3}} )
+				<td>{{pos.lastPrice}} / ({{pos.closePrice}})
+				<td>
+					<div ng-if="pos.dayChange > 0"><font color='green'>{{pos.dayChange | number:3}}</font></div>
+					<div ng-if="pos.dayChange < 0"><font color='red'>{{pos.dayChange | number:3}}</font></div>
+					<div ng-if="pos.dayChange == 0"><font color='black'>{{pos.dayChange | number:3}}</font></div>
+				</td>
+				<td>{{pos.marketValueLastPrice | number}}
+				<td>
+					<div ng-if="pos.dayGain > 0"><font color='green'>{{pos.dayGain | number:3}}</font></div>
+					<div ng-if="pos.dayGain < 0"><font color='red'>{{pos.dayGain | number:3}}</font></div>
+					<div ng-if="pos.dayGain == 0"><font color='black'>{{pos.dayGain | number:3}}</font></div>
+				</td>
+				<td>{{pos.positionLastPrice | number}} - ({{pos.positionLastPriceWithCommission | number}})
+				<td>{{pos.positionPourcentageLastPrice*100 | number}} - ({{pos.positionPourcentageLastPriceWithCommission*100 | number}})
+			</tr>
+			<tr>
+				<td><b>Market</b>
+				<td>&nbsp;
+				<td>&nbsp;
+				<td>&nbsp;
+				<td>{{ptfs.totals(p.portfolio.id,"sumPNLOpenCost") | number:3}}
+				<td>&nbsp;
+				<td>&nbsp;
+				<td>{{ptfs.totals(p.portfolio.id,"sumPNLOpenActualValue") | number:3}}
+				<td>
+					<div ng-if="ptfs.totals(p.portfolio.id,'sumPNLOpenDayGain') > 0"><font color='green'>
+						{{ptfs.totals(p.portfolio.id,"sumPNLOpenDayGain") | number:3}}</font></div>
+					<div ng-if="ptfs.totals(p.portfolio.id,'sumPNLOpenDayGain') < 0"><font color='red'>
+						{{ptfs.totals(p.portfolio.id,"sumPNLOpenDayGain") | number:3}}</font></div>
+					<div ng-if="ptfs.totals(p.portfolio.id,'sumPNLOpenDayGain') == 0"><font color='black'>
+						{{ptfs.totals(p.portfolio.id,"sumPNLOpenDayGain") | number:3}}</font></div>	
+				</td>
+				<td>{{ptfs.totals(p.portfolio.id,"sumPNLOpenPositionLast") | number:3}} - ({{ptfs.totals(p.portfolio.id,"sumPNLOpenPositionLastCommission") | number:3}})
+			</tr>
+			<tr>
+				<td>Cash
+			</tr>
+			<tr>
+				<td>TOTALS
+			</tr>
+		</table>
+	</div>
+</div>
+</div>
+
+
+
+<hr>
+
+
+</body>
+</html>
