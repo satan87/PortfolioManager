@@ -1,0 +1,74 @@
+{
+	"portfolios":
+	[
+		{"id" : 0,
+		"name" : "CAN REAL",
+		"trades":[
+			{"id" : 0,"Type" : "Buy", "Stock":"TBE","StockCountry":"CA", "Date":"2014-06-19", "Quantity":200, "Price":1.895, "Commission":2.00},
+			{"id" : 1,"Type" : "Buy", "Stock":"BBD.B","StockCountry":"CA", "Date":"2014-06-19", "Quantity":100, "Price":3.85, "Commission":1.00},
+			{"id" : 2,"Type" : "Buy", "Stock":"RMM.UN","StockCountry":"CA", "Date":"2014-06-20", "Quantity":20, "Price":4.6, "Commission":0.2},
+			{"id" : 3,"Type" : "Buy", "Stock":"BXE","StockCountry":"CA", "Date":"2014-06-24", "Quantity":10, "Price":9.16, "Commission":0.1},
+			{"id" : 4,"Type" : "Sell", "Stock":"BXE","StockCountry":"CA", "Date":"2014-06-30", "Quantity":10, "Price":9.23, "Commission":0.1},
+			{"id" : 5,"Type" : "Buy", "Stock":"MG","StockCountry":"CA", "Date":"2014-07-04", "Quantity":1, "Price":116.66, "Commission":0.01},
+			{"id" : 6,"Type" : "Sell", "Stock":"MG","StockCountry":"CA", "Date":"2014-07-07", "Quantity":1, "Price":117.04, "Commission":0.01},
+			{"id" : 7,"Type" : "Buy", "Stock":"MG","StockCountry":"CA", "Date":"2014-07-08", "Quantity":1, "Price":115.41, "Commission":0.01},
+			{"id" : 8,"Type" : "Sell", "Stock":"MG","StockCountry":"CA", "Date":"2014-07-08", "Quantity":1, "Price":115.89, "Commission":0.01},
+			{"id" : 9,"Type" : "Buy", "Stock":"MG","StockCountry":"CA", "Date":"2014-07-10", "Quantity":1, "Price":115.28, "Commission":0.01},
+			{"id" : 10,"Type" : "Sell", "Stock":"MG","StockCountry":"CA", "Date":"2014-07-10", "Quantity":1, "Price":115.79, "Commission":0.01},
+			{"id" : 11,"Type" : "Buy", "Stock":"CTC.A","StockCountry":"CA", "Date":"2014-07-11", "Quantity":1, "Price":101.88, "Commission":0.01},
+			{"id" : 12,"Type" : "Sell", "Stock":"CTC.A","StockCountry":"CA", "Date":"2014-07-11", "Quantity":1, "Price":102.16, "Commission":0.01},
+			{"id" : 13,"Type" : "Buy", "Stock":"JE","StockCountry":"CA", "Date":"2014-07-14", "Quantity":20, "Price":5.81, "Commission":0.2},
+			{"id" : 14,"Type" : "Buy", "Stock":"MG","StockCountry":"CA", "Date":"2014-07-17", "Quantity":1, "Price":118.06, "Commission":0.01},
+			{"id" : 15,"Type" : "Sell", "Stock":"MG","StockCountry":"CA", "Date":"2014-07-17", "Quantity":1, "Price":118.59, "Commission":0.01},
+			{"id" : 16,"Type" : "Buy", "Stock":"PXT","StockCountry":"CA", "Date":"2014-07-17", "Quantity":80, "Price":14.45, "Commission":0.8},
+			{"id" : 17,"Type" : "Buy", "Stock":"PSG","StockCountry":"CA", "Date":"2014-07-22", "Quantity":48, "Price":17.70, "Commission":0.48},
+			{"id" : 18,"Type" : "Buy", "Stock":"WKA.P","StockCountry":"CA", "Date":"2014-07-22", "Quantity":1000, "Price":0.2, "Commission":0},
+			{"id" : 19,"Type" : "Buy", "Stock":"BXE","StockCountry":"CA", "Date":"2014-08-18", "Quantity":19, "Price":7.88, "Commission":0.19},
+			{"id" : 20,"Type" : "Sell", "Stock":"JE","StockCountry":"CA", "Date":"2014-08-18", "Quantity":20, "Price":6.42, "Commission":0.2},
+			{"id" : 21,"Type" : "Buy", "Stock":"TBE","StockCountry":"CA", "Date":"2014-10-02", "Quantity":65, "Price":1.52, "Commission":0.65},
+			{"id" : 22,"Type" : "Buy", "Stock":"PXT","StockCountry":"CA", "Date":"2014-10-02", "Quantity":32, "Price":12.04, "Commission":0.32},
+			{"id" : 23,"Type" : "Buy", "Stock":"SCC","StockCountry":"CA", "Date":"2014-10-17", "Quantity":49, "Price":10.59, "Commission":0.49},
+			{"id" : 24,"Type" : "Sell", "Stock":"SCC","StockCountry":"CA", "Date":"2014-10-24", "Quantity":49, "Price":11.31, "Commission":0.49},
+			{"id" : 25,"Type" : "Buy", "Stock":"PXT","StockCountry":"CA", "Date":"2014-10-27", "Quantity":50, "Price":10.09, "Commission":0.5},
+			{"id" : 26,"Type" : "Sell", "Stock":"BBD.B","StockCountry":"CA", "Date":"2014-11-12", "Quantity":100, "Price":4.03, "Commission":1.00},
+			{"id" : 27,"Type" : "Buy", "Stock":"BXE","StockCountry":"CA", "Date":"2014-11-18", "Quantity":38, "Price":5.17, "Commission":0.38},
+			{"id" : 28,"Type" : "Buy", "Stock":"RMM.UN","StockCountry":"CA", "Date":"2014-11-21", "Quantity":40, "Price":4.15, "Commission":0.4},
+			{"id" : 29,"Type" : "Buy", "Stock":"CHR.B","StockCountry":"CA", "Date":"2014-11-25", "Quantity":80, "Price":4.53, "Commission":0.8},
+			{"id" : 30,"Type" : "Buy", "Stock":"STB","StockCountry":"CA", "Date":"2014-11-25", "Quantity":30, "Price":7.23, "Commission":0.3},
+			{"id" : 31,"Type" : "Sell", "Stock":"PSG","StockCountry":"CA", "Date":"2014-11-26", "Quantity":48, "Price":20.02, "Commission":0.48},
+			{"id" : 32,"Type" : "Buy", "Stock":"TBE","StockCountry":"CA", "Date":"2014-11-26", "Quantity":100, "Price":1.39, "Commission":1.00},
+			{"id" : 33,"Type" : "Buy", "Stock":"PXT","StockCountry":"CA", "Date":"2014-10-26", "Quantity":100, "Price":9.11, "Commission":1.00}
+			],
+		"cash":[
+			{"id" : 0,"Type" : "Deposit", "Date":"2014-06-18", "Amount":1000.00},
+			{"id" : 1,"Type" : "Deposit", "Date":"2014-07-16", "Amount":2000.00},
+			{"id" : 2,"Type" : "Deposit", "Date":"2014-07-21", "Amount":200.00},
+			{"id" : 3,"Type" : "Deposit", "Date":"2014-09-24", "Amount":500.00},
+			{"id" : 4,"Type" : "Deposit", "Date":"2014-10-16", "Amount":500.00},
+			{"id" : 5,"Type" : "Deposit", "Date":"2014-11-24", "Amount":500.00}
+			],
+		"dividend":[
+			{"id" : 0,"Stock":"RMM.UN","StockCountry":"CA", "Date":"2014-06-26", "Price":0.0375, "Total":0.75},
+			{"id" : 1,"Stock":"TBE","StockCountry":"CA", "Date":"2014-06-26", "Price":0.016, "Total":3.20},
+			{"id" : 2,"Stock":"RMM.UN","StockCountry":"CA", "Date":"2014-07-29", "Price":0.0375, "Total":0.75},
+			{"id" : 3,"Stock":"TBE","StockCountry":"CA", "Date":"2014-07-29", "Price":0.016, "Total":3.20},
+			{"id" : 4,"Stock":"RMM.UN","StockCountry":"CA", "Date":"2014-08-27", "Price":0.0375, "Total":0.75},
+			{"id" : 5,"Stock":"TBE","StockCountry":"CA", "Date":"2014-08-27", "Price":0.016, "Total":3.20},
+			{"id" : 6,"Stock":"BBD.B","StockCountry":"CA", "Date":"2014-09-10", "Price":0.25, "Total":2.50},
+			{"id" : 7,"Stock":"RMM.UN","StockCountry":"CA", "Date":"2014-09-26", "Price":0.0375, "Total":0.75},
+			{"id" : 8,"Stock":"TBE","StockCountry":"CA", "Date":"2014-09-26", "Price":0.016, "Total":3.20},
+			{"id" : 8,"Stock":"TBE","StockCountry":"CA", "Date":"2014-10-29", "Price":0.016, "Total":4.24},
+			{"id" : 8,"Stock":"RMM.UN","StockCountry":"CA", "Date":"2014-10-29", "Price":0.0375, "Total":0.75}
+			]
+		},
+		{"id" : 1,
+		"name" : "INVESTOPEDIA",
+		"trades":[
+			{"id" : 0,"Type" : "Buy", "Stock":"AAPL","StockCountry":"US","Date":"2014-06-08", "Quantity":560, "Price":79.10, "Commission":19.99}
+			],
+		"cash":[],
+		"dividend":[]
+		}
+	]
+	
+}

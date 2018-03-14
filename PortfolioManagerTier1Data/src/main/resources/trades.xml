@@ -1,0 +1,23 @@
+<xml>
+	<portfolios>
+	
+		<portfolio>
+			<id>1</id>
+			<name>Virtual Broker</name>
+			<real>yes</real>
+			<transactions>
+			</transactions>	
+		</portfolio>
+		
+		
+		<portfolio>
+			<id>2</id>
+			<name>Investopedia 2014</name>
+			<real>no</real>
+			<transactions>
+			</transactions>	
+		</portfolio>
+		
+	
+	</portfolios>
+</xml>
