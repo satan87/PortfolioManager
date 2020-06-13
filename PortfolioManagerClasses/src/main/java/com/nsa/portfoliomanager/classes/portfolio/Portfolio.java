@@ -2,7 +2,6 @@ package com.nsa.portfoliomanager.classes.portfolio;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 import com.nsa.portfoliomanager.classes.transaction.Transaction;
@@ -25,25 +24,25 @@ public class Portfolio {
 	
 	public Portfolio(){
 		super();
-		transaction = new ArrayList<Transaction>();
+		transaction = new ArrayList<>();
 	}
 	public Portfolio(Integer id){
 		super();
 		this.id=id;
-		transaction = new ArrayList<Transaction>();
+		transaction = new ArrayList<>();
 	}
 	public Portfolio(Integer id, String name){
 		super();
 		this.id=id;
 		this.name=name;
-		transaction = new ArrayList<Transaction>();
+		transaction = new ArrayList<>();
 	}
 	public Portfolio(Integer id, String name , boolean real){
 		super();
 		this.id=id;
 		this.name=name;
 		this.real=real;
-		transaction = new ArrayList<Transaction>();
+		transaction = new ArrayList<>();
 	}
 
 	public Integer getId() {
