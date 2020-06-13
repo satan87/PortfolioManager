@@ -2,15 +2,6 @@ package com.nsa.portfoliomanager.classes.transaction;
 
 import java.util.Date;
 
-/**
- *  CASH class extends Transaction.
- *  It defines 1 Cash Transaction ( a buy or a sell )
- *   
- * @author Nicolas Savoini
- * @version 1.0
- *
- */
-
 public class Cash extends Transaction {
 
 	private Double amount;
@@ -31,18 +22,20 @@ public class Cash extends Transaction {
 		this.amount = amount;
 	}
 	
-	
-	// Getter / Setter
 	public Double getAmount() {
 		return amount;
 	}
+	
 	public void setAmount(Double amount) {
 		this.amount = amount;
 	}
-	
+
 	@Override
-	public String getType(){
-		return "Cash";
+	public String print() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Cash amount of: " + amount);
+		builder.append(" per ").append(super.print());
+		return builder.toString();
 	}
 	
 }

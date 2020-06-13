@@ -15,7 +15,8 @@ public class Stock extends Instrument{
 	public Stock(){
 		super();
 	}
-	public Stock(String symbol,Country country,String name){
+	
+	public Stock(String symbol, Country country, String name){
 		super(symbol,country);
 		this.name=name;
 	}
@@ -27,8 +28,5 @@ public class Stock extends Instrument{
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-	
-	
-	
+
 }

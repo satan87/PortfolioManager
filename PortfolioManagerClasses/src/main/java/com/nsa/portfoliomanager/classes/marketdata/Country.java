@@ -56,24 +56,32 @@ public class Country {
 	public void setYahooNOtation(String yahooNOtation) {
 		this.yahooNotation = yahooNOtation;
 	}
-	
+
 	@Override
-	public boolean equals(Object other){
-		boolean equal = false;
-		
-		if ( other instanceof Country ){
-			
-			if ( this.name.compareToIgnoreCase(((Country)other).getName()) == 0 ){
-				equal = true;
-			}else{
-				equal = false;
-			}
-		}else{
-			equal = false;
-		}
-	
-		return equal;
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		return result;
 	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Country other = (Country) obj;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equalsIgnoreCase((other.name)))
+					return false;
+		return true;
+	}
+	
+	
 	
 
 }

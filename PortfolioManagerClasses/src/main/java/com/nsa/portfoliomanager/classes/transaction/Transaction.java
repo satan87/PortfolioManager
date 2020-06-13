@@ -2,27 +2,21 @@ package com.nsa.portfoliomanager.classes.transaction;
 
 import java.util.Date;
 
-/**
- * Class Transaction. 
- * Parent Class for : Trade, Cash, Dividend 
- * 
- * 
- * @author Nicolas Savoini
- * @version 1.0
- *
- */
+import com.nsa.portfoliomanager.classes.format.DateFormator;
+import com.nsa.portfoliomanager.classes.print.Printable;
 
-public class Transaction {
+public abstract class Transaction implements Printable {
 	
 	private Integer id = -1;
-	private Date dateExecution;
-	private Date dateEffective;
+	private Date dateExecution = new Date();
+	private Date dateEffective = new Date();
 	private Double commission = 0.00;
 	private String comment = "";
 	
 	public  Transaction(){
 		super();
 	}
+	
 	public Transaction(Date dateExecution){
 		super();
 		this.dateExecution = dateExecution;
@@ -57,14 +51,15 @@ public class Transaction {
 	public Integer getId() {
 		return id;
 	}
+	
 	public void setId(Integer id) {
 		this.id = id;
 	}
 	
-	
 	public Date getDateExecution() {
 		return dateExecution;
 	}
+	
 	public void setDateExecution(Date dateExecution) {
 		this.dateExecution = dateExecution;
 	}
@@ -72,29 +67,39 @@ public class Transaction {
 	public Date getDateEffective() {
 		return dateEffective;
 	}
+	
 	public void setDateEffective(Date dateEffective) {
 		this.dateEffective = dateEffective;
 	}
 	
-	
 	public Double getCommission() {
 		return commission;
 	}
+	
 	public void setCommission(Double commission) {
 		this.commission = commission;
 	}
 	
-	
 	public String getComment() {
 		return comment;
 	}
+	
 	public void setComment(String comment) {
 		this.comment = comment;
 	}
 	
-	
-	public String getType(){
-		return new String("Transaction");
+	public String print() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Transaction: " + id);
+		builder.append(" Executed On: " + DateFormator.yyyymmdd(dateExecution));
+		builder.append(" Effectived On: " + DateFormator.yyyymmdd(dateEffective));
+		if (commission != 0) {
+			builder.append(" Commission: " + commission);
+		}
+		if (!comment.isBlank()) {
+			builder.append(" Comment: " + comment);
+		}
+		return builder.toString();
 	}
 
 }

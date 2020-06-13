@@ -1,19 +1,7 @@
 package test;
 
-
-import java.time.LocalDate;
-import java.time.Month;
-import java.time.ZoneId;
-import java.util.Date;
-
-import com.nsa.portfoliomanager.classes.marketdata.Country;
-import com.nsa.portfoliomanager.classes.marketdata.Stock;
-import com.nsa.portfoliomanager.classes.portfolio.Portfolio;
-import com.nsa.portfoliomanager.classes.transaction.Cash;
-import com.nsa.portfoliomanager.classes.transaction.Trade;
-
 public class ExLoad {
-	
+/*
 	//LocalDate ld =  LocalDate.of(2014, Month.JUNE, 18);
 	//Date.from( ld.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant() )
 	
@@ -97,6 +85,6 @@ public class ExLoad {
 		return p;
 		
 	}
-	
+*/
 
 }

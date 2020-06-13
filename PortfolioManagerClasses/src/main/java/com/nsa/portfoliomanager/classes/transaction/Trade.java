@@ -1,17 +1,7 @@
 package com.nsa.portfoliomanager.classes.transaction;
 
 import java.util.Date;
-
 import com.nsa.portfoliomanager.classes.marketdata.Instrument;
-
-/**
- *  Trade class extends Transaction.
- *  It defines 1 Trade ( a buy or a sell )
- *   
- * @author Nicolas Savoini
- * @version 1.0
- *
- */
 
 public class Trade extends Transaction {
 
@@ -67,24 +57,23 @@ public class Trade extends Transaction {
 		this.quantity = quantity;
 	}
 	
-	
-	@Override
-	public String getType(){
-		return new String("Trade");
-	}
-	
-	
-	// Function
-	/**
-	 * String representing if the trade is a BUY or a SELL
-	 * @return String
-	 */
-	
-	public String getBuySell(){
+
+	public Direction getBuySell() {
 		if (this.quantity > 0)
-			return BUYSELL.BUY;
+			return Direction.BUY;
 		
-		return BUYSELL.SELL;
+		return Direction.SELL;
+	}
+
+	@Override
+	public String print() {
+		StringBuilder builder = new StringBuilder();
+		builder.append(getBuySell().print());
+		builder.append(" " + getQuantity());
+		builder.append(" of " + getInstrument().getSymbol());
+		builder.append(" for " + getPrice());
+		builder.append(" per ").append(super.print());
+		return builder.toString();
 	}
 	
 }

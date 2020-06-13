@@ -1,19 +1,7 @@
 package test;
 
-import java.util.Collections;
-import java.util.List;
-import com.nsa.portfoliomanager.classes.marketdata.Country;
-import com.nsa.portfoliomanager.classes.marketdata.Instrument;
-import com.nsa.portfoliomanager.classes.marketdata.Stock;
-import com.nsa.portfoliomanager.classes.portfolio.Portfolio;
-import com.nsa.portfoliomanager.classes.print.Print;
-import com.nsa.portfoliomanager.classes.print.PrintString;
-import com.nsa.portfoliomanager.classes.transaction.Trade;
-import com.nsa.portfoliomanager.classes.transaction.TransactionComparator;
-
-@SuppressWarnings("unused")
 public class Test {
-
+/*
 	public static void main(String[] args) {
 		
 		Portfolio p = ExLoad.getPortfolioExemple();
@@ -32,8 +20,6 @@ public class Test {
 		
 		//System.out.println(ps.TransactionList(p));
 
-		
-		/*
 		//System.out.println( "I got Open positions : " + tool.hasOpenPositions(p) );
 		//System.out.println( "I got Open positions BBD.B: " + tool.hasOpenPositions(p,BBD) );
 		
@@ -50,9 +36,9 @@ public class Test {
 		System.out.println(  "STB 2\n" + ps.TransactionList( pr2.getTransactions( )));
 		System.out.println("");
 		System.out.println("\n"+pr2.getPNLRealized(false) + " " + pr2.getPNLRealized(true) + " " +  pr2.getPNLUnrealized(false)  + " " + pr2.getPNLUnrealized(true));
-*/
+
 		
 		System.out.println("END");
 	}
-
+*/
 }

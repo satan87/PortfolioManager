@@ -2,20 +2,12 @@ package com.nsa.portfoliomanager.classes.transaction;
 
 import java.util.Date;
 
+import com.nsa.portfoliomanager.classes.format.DateFormator;
 import com.nsa.portfoliomanager.classes.marketdata.Instrument;
-
-/**
- *  DIVIDEND class extends Transaction.
- *  It defines 1 DIVIDEND Payment
- *   
- * @author Nicolas Savoini
- * @version 1.0
- *
- */
 
 public class Dividend extends Transaction {
 
-	private Date dateAnnouncement;
+	private Date dateAnnouncement = new Date();
 	private Instrument instrument;
 	private Double amount;
 	
@@ -65,8 +57,13 @@ public class Dividend extends Transaction {
 	}
 	
 	@Override
-	public String getType(){
-		return new String("Dividend");
+	public String print() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Dividend of: " + amount);
+		builder.append(" for " + instrument.getSymbol());
+		builder.append(" announced on: " + DateFormator.yyyymmdd(dateAnnouncement));
+		builder.append(" per ").append(super.print());
+		return builder.toString();
 	}
-	
+
 }
